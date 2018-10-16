@@ -1,0 +1,1 @@
+Django girls Tutorial practice
