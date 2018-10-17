@@ -1,15 +1,9 @@
-import os
-
-from django.http import HttpResponse, request
-from django.utils import timezone
+from django.http import HttpResponse
+from django.template import loader
 
 
 def post_list(request):
-    current_path = os.path.abspath(__file__)
-    blog_path = os.path.dirname(current_path)
-    app_path = os.path.dirname(blog_path)
-    post_list_path = os.path.join(app_path, 'templates', 'blog', 'post_list.html')
-
-    with open(post_list_path, 'rt') as f:
-        content = f.read()
+    template = loader.get_template('blog/post_list.html')
+    context = {}
+    content = template.render(context, request)
     return HttpResponse(content)
