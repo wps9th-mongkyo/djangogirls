@@ -14,21 +14,17 @@
               navbar-expand-lg
               navbar-dark
               bg-dark">
-      <a href="" class="navbar-brand">Django</a>
+      <a href="/posts/" class="navbar-brand">Django</a>
   </nav>
   <div class="container">
-    {% for post in posts %}
       <div class="card mb-2">
           <div class="card-body">
-              <h5 class="card-title">
-                  <a href="/posts/{{ post.pk }}">{{ post.title }}</a>
-              </h5>
+              <h5 class="card-title">{{ post.title}}</h5>
               <h6 class="card-subtitle mb-2 text-muted">{{ post.created_date }}</h6>
-              <p class="care-text">{{ post.text|linebreaksbr|truncatechars:200 }}</p>
+              <p class="care-text">{{ post.text|linebreaksbr }}</p>
               <p class="text-right">{{ post.author }}</p>
           </div>
       </div>
-      {% endfor %}
   </div>
   <ul>
 

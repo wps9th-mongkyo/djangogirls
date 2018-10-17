@@ -19,4 +19,9 @@ def post_list(request):
 
 
 def post_detail(request, pk):
-    return HttpResponse(pk)
+    post = Post.objects.get(id=pk)
+    context = {
+        'post': post
+    }
+
+    return render(request, 'blog/post_detail.html', context)
