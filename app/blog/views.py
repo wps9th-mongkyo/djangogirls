@@ -1,15 +1,17 @@
 import random
 
 from django.shortcuts import render
+from .models import Post
 
 
 def post_list(request):
+    posts = Post.objects.order_by('-created_date')
+    content = ''
+    content + '<ul>'
+    for post in posts:
+        content += f'<li>{ post.title }</li>'
+    content += '</ul>'
     context = {
-        'pokemon': random.choice(['피카츄', '파이리', '꼬부기']),
+        'posts': content
     }
-    # return render(
-    #     request=request,
-    #     template_name='blog/post_list.html',
-    #     context=context
-    # )
     return render(request, 'blog/post_list.html', context)
