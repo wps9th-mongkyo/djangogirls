@@ -17,6 +17,8 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import RedirectView
+
 from blog import views
 
 
@@ -30,5 +32,6 @@ urlpatterns = [
         name='post-detail'),
     url(r'^posts/create/$',
         views.post_create,
-        name='post-create')
+        name='post-create'),
+    path('', RedirectView.as_view(pattern_name='post-list')),
 ]
